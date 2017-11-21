@@ -2,6 +2,8 @@ package com.luxoft.oop.interfaces;
 
 public interface Int1 {
 
+    int X = 100_500;
+
     default int m(int i) {
         System.out.println("jhgsdkjahgsfljshgfd");
         return calc(i);

@@ -8,7 +8,9 @@ public class Cla2 implements Int1, Cla1 {
     }
 
     @Override
-    public int m(int i) {
+    public int m(Cla2 this, int i) {
+        Cla1.m3();
+//        this.main("");
         return Int1.super.m(i);
     }
 }
