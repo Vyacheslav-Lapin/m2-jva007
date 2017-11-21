@@ -1,10 +1,12 @@
 package com.luxoft.oop.interfaces;
 
+import static java.lang.System.out;
+
 public class Cla2 implements Int1, Cla1 {
 
     public static void main(String... args) {
-        System.out.println(new Cla2().m(5) == 10);
-        System.out.println(new Cla2().m(5) == 12);
+        out.println(new Cla2().m(5) == 10);
+        out.println(new Cla2().m(5) == 12);
     }
 
     @Override
