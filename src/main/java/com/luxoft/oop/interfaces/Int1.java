@@ -9,7 +9,8 @@ public interface Int1 {
         return calc(i);
     }
 
-    private int calc(int i) {
+    @Private
+    default int calc(int i) {
         return i + 7;
     }
 

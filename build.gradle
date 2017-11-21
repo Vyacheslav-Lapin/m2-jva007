@@ -30,3 +30,10 @@ dependencies {
     compileOnly ':lombok-edge:'//, //'org.projectlombok:lombok:+',
             //'edu.washington.cs.types.checker:checker-framework:+'
 }
+
+task Wrapper(type: Wrapper) {
+    description = 'Generates gradlew[.bat] scripts'
+    gradleVersion = '4.3.1'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
