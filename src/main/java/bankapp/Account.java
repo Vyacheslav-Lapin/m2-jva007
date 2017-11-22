@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
-@ToString
+@ToString(exclude = "id")
 public class Account {
     private int id;
 

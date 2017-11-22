@@ -7,9 +7,11 @@ public class Client {
     @Getter
     private String name;
     private Collection accounts;
+    private Gender gender;
 
-    public Client(String name, Account... accounts) {
+    public Client(String name, Gender gender, Account... accounts) {
         this.name = name;
+        this.gender = gender;
         this.accounts = new Collection(accounts);
     }
 
@@ -30,7 +32,14 @@ public class Client {
             accountsString.append(account).append("\n");
 
         return String.format(
-                "Клиент %s имеет %d аккаунтов\n%s",
-                name, accounts.length, accountsString);
+                "%s %s имеет %d аккаунтов\n%s",
+                gender.getGreeting(),
+                name,
+                accounts.length,
+                accountsString);
+    }
+
+    public String getClientGreeting() {
+        return gender.getGreeting();
     }
 }

@@ -2,6 +2,9 @@ package bankapp;
 
 import lombok.AllArgsConstructor;
 
+import static bankapp.Gender.FEMALE;
+import static bankapp.Gender.MALE;
+
 @AllArgsConstructor
 public class BankApplication {
 
@@ -10,17 +13,17 @@ public class BankApplication {
     public static void main(String... args) {
         BankApplication bankApplication =
                 new BankApplication(new Bank(
-                        new Client("Мария", new Account(1, 100)),
-                        new Client("Семён", new Account(2, 1000)),
-                        new Client("Варвара", new Account(3, 10000)),
-                        new Client("Анна", new Account(4, 10)),
-                        new Client("Александр", new Account(5, 400)),
-                        new Client("Игнат", new Account(6, 800)),
-                        new Client("Изяслав", new Account(7, 300)),
-                        new Client("Игорь", new Account(8, 450)),
-                        new Client("Ольга", new Account(9, 780)),
-                        new Client("Виктория", new Account(10, 57)),
-                        new Client("Евгению", new Account(11, 59))
+                        new Client("Мария", FEMALE, new Account(1, 100)),
+                        new Client("Семён", MALE, new Account(2, 1000)),
+                        new Client("Варвара", FEMALE, new Account(3, 10000)),
+                        new Client("Анна", FEMALE, new Account(4, 10)),
+                        new Client("Александр", MALE, new Account(5, 400)),
+                        new Client("Игнат", MALE, new Account(6, 800)),
+                        new Client("Изяслав", MALE, new Account(7, 300)),
+                        new Client("Игорь", MALE, new Account(8, 450)),
+                        new Client("Ольга", FEMALE, new Account(9, 780)),
+                        new Client("Виктория", FEMALE, new Account(10, 57)),
+                        new Client("Евгения", FEMALE, new Account(11, 59))
                 ));
 
         bankApplication.modifyBank();
