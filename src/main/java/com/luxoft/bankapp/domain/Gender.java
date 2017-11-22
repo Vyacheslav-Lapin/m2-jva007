@@ -1,4 +1,4 @@
-package bankapp;
+package com.luxoft.bankapp.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

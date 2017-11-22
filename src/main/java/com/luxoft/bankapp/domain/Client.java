@@ -1,5 +1,6 @@
-package bankapp;
+package com.luxoft.bankapp.domain;
 
+import com.luxoft.bankapp.domain.accounts.Account;
 import lombok.Getter;
 
 import java.util.ArrayList;
