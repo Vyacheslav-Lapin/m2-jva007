@@ -13,6 +13,8 @@ public class Account {
     private double balance;
 
     public void deposit(double amount) {
+        if (amount < 0)
+            withdraw(-amount);
         balance += amount;
     }
 

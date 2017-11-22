@@ -1,12 +1,11 @@
 package bankapp;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 public class Client {
 
     @Getter
-    private final String name;
+    private String name;
     private Collection accounts;
 
     public Client(String name, Account... accounts) {
@@ -24,12 +23,14 @@ public class Client {
     }
 
     public String getInfo() {
-        Account[] accounts = ((Account[]) this.accounts.getObjects());
+        Account[] accounts = getAccounts();
 
         StringBuilder accountsString = new StringBuilder();
-        for (Account account : accounts) {
+        for (Account account : accounts)
             accountsString.append(account).append("\n");
-        }
-        return "Клиент " + name + " имеет " + accounts.length + " аккаунтов\n" + accountsString;
+
+        return String.format(
+                "Клиент %s имеет %d аккаунтов\n%s",
+                name, accounts.length, accountsString);
     }
 }

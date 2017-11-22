@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class BankApplication {
+
     private Bank bank;
 
     public static void main(String... args) {
@@ -19,7 +20,7 @@ public class BankApplication {
                         new Client("Игорь", new Account(8, 450)),
                         new Client("Ольга", new Account(9, 780)),
                         new Client("Виктория", new Account(10, 57)),
-                        new Client("Виктория", new Account(11, 59))
+                        new Client("Евгению", new Account(11, 59))
                 ));
 
         bankApplication.modifyBank();
@@ -34,7 +35,7 @@ public class BankApplication {
                         Math.random() * balance * 2)
                         - balance;
 
-                if (delta > 0)
+                if (delta >= 0)
                     account.deposit(delta);
                 else
                     account.withdraw(-delta);
