@@ -3,12 +3,22 @@ package com.luxoft.bankapp.service;
 import com.luxoft.bankapp.domain.Bank;
 import com.luxoft.bankapp.domain.Client;
 import com.luxoft.bankapp.domain.accounts.Account;
+import com.luxoft.bankapp.domain.accounts.Listener;
 import lombok.AllArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 public class BankService {
 
     private Bank bank;
+
+    private static List<Listener<Client>> listeners = new ArrayList<>();
+
+    public static void addListener(Listener<Client> listener) {
+        listeners.add(listener);
+    }
 
     public BankService addClient(Client client) {
         BankService.addClient(bank, client);
@@ -17,6 +27,10 @@ public class BankService {
 
     public static Bank addClient(Bank bank, Client client) {
         bank.addClient(client);
+
+        for (Listener<Client> listener : listeners)
+            listener.action(client);
+
         return bank;
     }
 

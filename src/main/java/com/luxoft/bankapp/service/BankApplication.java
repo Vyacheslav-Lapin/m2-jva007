@@ -3,6 +3,7 @@ package com.luxoft.bankapp.service;
 import com.luxoft.bankapp.domain.*;
 import com.luxoft.bankapp.domain.accounts.Account;
 import com.luxoft.bankapp.domain.accounts.CheckingAccount;
+import com.luxoft.bankapp.domain.accounts.Listener;
 import com.luxoft.bankapp.domain.accounts.SavingAccount;
 import lombok.AllArgsConstructor;
 
@@ -11,6 +12,9 @@ public class BankApplication {
 
     public static void main(String... args) {
         Bank bank = new Bank();
+
+        BankService.addListener(client ->
+                System.out.println("client.getName() = " + client.getName()));
 
         new BankService(bank)
                 .addClient(new Client("Мария", Gender.FEMALE, new SavingAccount(100)))
