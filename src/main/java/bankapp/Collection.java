@@ -1,30 +1,32 @@
 package bankapp;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-public class Collection {
+public class Collection<T> {
 
-    public static final int DEFAULT_SIZE = 10;
+    public static final int DEFAULT_SIZE = 16;
 
     @Getter
-    private Object[] objects;
+    private T[] objects;
 
     public Collection() {
-        this(new Object[DEFAULT_SIZE]);
+        //noinspection unchecked
+        this((T[]) new Object[DEFAULT_SIZE]);
     }
 
     private int counter;
 
-    public Collection(Object... objects) {
+    @SuppressWarnings("WeakerAccess")
+    @SafeVarargs
+    public Collection(T... objects) {
         this.objects = objects;
         counter = objects.length - 1;
     }
 
-    public void add(Object o) {
+    public void add(T o) {
         if (counter >= objects.length)
-            objects = new Object[
+            //noinspection unchecked
+            objects = (T[]) new Object[
                     Math.round(objects.length * 1.5f)];
 
         objects[counter++] = o;

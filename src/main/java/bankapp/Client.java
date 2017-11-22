@@ -2,31 +2,33 @@ package bankapp;
 
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Client {
 
     @Getter
     private String name;
-    private Collection accounts;
     private Gender gender;
+    private List<Account> accounts;
 
     public Client(String name, Gender gender, Account... accounts) {
         this.name = name;
         this.gender = gender;
-        this.accounts = new Collection(accounts);
+        this.accounts = new ArrayList<>();
+        Collections.addAll(this.accounts, accounts);
     }
 
     public void addAccount(Account account) {
         accounts.add(account);
     }
 
-    public Account[] getAccounts() {
-        return ((Account[]) accounts.getObjects())
-                .clone();
+    public List<Account> getAccounts() {
+        return Collections.unmodifiableList(accounts);
     }
 
     public String getInfo() {
-        Account[] accounts = getAccounts();
-
         StringBuilder accountsString = new StringBuilder();
         for (Account account : accounts)
             accountsString.append(account).append("\n");
@@ -35,7 +37,7 @@ public class Client {
                 "%s %s имеет %d аккаунтов\n%s",
                 gender.getGreeting(),
                 name,
-                accounts.length,
+                accounts.size(),
                 accountsString);
     }
 
